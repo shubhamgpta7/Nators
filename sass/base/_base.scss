@@ -1,0 +1,43 @@
+/* universal selectors */
+*,
+/* for pseudo selectors so that elements do not behave otherwise */
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+
+    /* implementing inheritence */
+    box-sizing: inherit;
+}
+
+html {
+    //defines what 1rem is
+    font-size: 62.5%;  // 1 rem = 16px;  10/16=62.5
+
+    @include respond(tab-land){
+        font-size: 56.25%; // 1 rem = 9px;  10/16=56.25%
+    }
+
+    @include respond(tab-port){
+        font-size: 50%; // 1 rem = 8px;  10/16=50%
+    }
+
+    @include respond(big-desktop){
+        font-size: 75%; // 1 rem = 12px;  12/16=75%
+    }
+}
+
+body{
+    /* using inheritence property */
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port){
+        padding:0;
+    }
+}
+
+::selection{
+    background-color: $color-primary;
+    color: $color-white;
+}
